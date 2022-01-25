@@ -786,7 +786,9 @@
     "extensions/objects/templates/translatable-set-of-unicode-string-editor.component.ts",
     "extensions/objects/templates/translatable-set-of-unicode-string-editor.component.spec.ts",
     "extensions/objects/templates/unicode-string-editor.component.ts",
-    "extensions/objects/templates/unicode-string-editor.component.spec.ts"
+    "extensions/objects/templates/unicode-string-editor.component.spec.ts",
+    "core/templates/pages/topics-and-skills-dashboard-page/modals/create-new-skill-modal.component.ts",
+    "core/templates/pages/topics-and-skills-dashboard-page/modals/create-new-skill-modal.component.spec.ts"
   ],
   "include": [
     "assets/*.ts",

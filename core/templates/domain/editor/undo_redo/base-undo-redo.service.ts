@@ -73,7 +73,7 @@ export class BaseUndoRedo {
    */
   undoChange(domainObject: DomainObject): boolean {
     if (this._appliedChanges.length !== 0) {
-      var change = this._appliedChanges.pop();
+      var change = this._appliedChanges.pop() as Change;
       this._undoneChanges.push(change);
       this._reverseChange(change, domainObject);
       return true;
@@ -88,7 +88,7 @@ export class BaseUndoRedo {
    */
   redoChange(domainObject: DomainObject): boolean {
     if (this._undoneChanges.length !== 0) {
-      var change = this._undoneChanges.pop();
+      var change = this._undoneChanges.pop() as Change;
       this._appliedChanges.push(change);
       this._applyChange(change, domainObject);
       return true;

@@ -59,7 +59,7 @@ export class SkillEditorStateService {
   private _skill!: Skill;
   private _skillRights!: SkillRights;
   private _skillIsInitialized: boolean = false;
-  private assignedSkillTopicData = null;
+  private assignedSkillTopicData: {[topicName: string]: string} = {};
   private _skillIsBeingLoaded: boolean = false;
   private _skillIsBeingSaved: boolean = false;
   private _groupedSkillSummaries: GroupedSkillSummaries = {
@@ -86,8 +86,10 @@ export class SkillEditorStateService {
     this._setSkill(skill);
   };
 
-  private _updateGroupedSkillSummaries = (groupedSkillSummaries) => {
-    let topicName = null;
+  private _updateGroupedSkillSummaries = (groupedSkillSummaries: {
+    [topicName: string]: SkillSummaryBackendDict[];
+  }) => {
+    let topicName = '';
     this._groupedSkillSummaries.current = [];
     this._groupedSkillSummaries.others = [];
 
@@ -99,7 +101,7 @@ export class SkillEditorStateService {
           break;
         }
       }
-      if (topicName !== null) {
+      if (topicName !== '') {
         break;
       }
     }
@@ -171,7 +173,7 @@ export class SkillEditorStateService {
     return this._skillIsBeingLoaded;
   }
 
-  getAssignedSkillTopicData(): string {
+  getAssignedSkillTopicData(): {[topicName: string]: string} {
     return this.assignedSkillTopicData;
   }
 
@@ -247,7 +249,7 @@ export class SkillEditorStateService {
    * for that variable.
    */
   updateExistenceOfSkillDescription(
-      description: string, successCallback: (value?: Object) => void): void {
+      description: string, successCallback: (value: boolean) => void): void {
     this.skillBackendApiService.doesSkillWithDescriptionExistAsync(
       description).then(
       (skillDescriptionExists) => {

@@ -46,7 +46,7 @@ export class CreateNewSkillModalComponent {
   HTML_SCHEMA: {type: string} = { type: 'html' };
   MAX_CHARS_IN_SKILL_DESCRIPTION = (
     constants.MAX_CHARS_IN_SKILL_DESCRIPTION);
-  newExplanationObject = null;
+  newExplanationObject: object = {};
 
   constructor(
     private ngbActiveModal: NgbActiveModal,
